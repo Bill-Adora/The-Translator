@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8"/>
+        <title>The Translator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+        <style>
+            body {
+                background-color: #3b4b54
+            }
+            #header {
+                font-family: Arial, Helvetica, sans-serif;
+                color:orangered;
+                text-align:center;
+            }
+            #logo {
+                background-color: #3b4b54
+            }
+            #InputText {
+                float : left;
+                margin : 0px  0px  0px 200px;
+            }
+            #OutputText {
+                float : left;
+                margin : 0px  0px  0px 30px;
+            }
+            #lang {
+                font-family: Arial, Helvetica, sans-serif;
+                color:orangered;
+            }
+            #lang1 {
+                float: 
+                font-family: Arial, Helvetica, sans-serif;
+                color:orangered;
+            }
+            #text {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 20px
+            }
+            #text1 {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 20px
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "logo">
+           <img src="Images/logo.png"> 
+        </div>
+        <div id = "header">
+            <h1>The Translator</h1>
+        </div>
+        <div id = "Message">
+            <section id = "InputText">
+                <form>
+                    <legend id = "lang">English</legend>
+                    <textarea rows="18" cols="42" placeholder="Enter text here.." id = "text" name = "Eng"></textarea>
+                    <input type="submit" value="Translate" id = "lang1">
+                </form>
+            </section>
+            <section id = "OutputText">
+                <form>
+                    <legend id = "lang">French</legend>
+                    <textarea rows="18" cols="42" id = "text1"></textarea>
+                </form>
+            </section>
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="/socket.io/socket.io.js"></script>   
+        <script>
+            var socket = io();
+            $('form').submit(function(e){
+                e.preventDefault();
+                var input = $('#text').val();
+                socket.emit('input', input);
+            });
+            socket.on('translated', function(data) {
+                $('#text1').html(data);
+            });
+        </script>
+        
+    </body>
+</html>

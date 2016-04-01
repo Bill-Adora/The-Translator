@@ -1,0 +1,21 @@
+{
+  "name": "\"The Translator\"",
+  "description": "Translates Texts",
+  "main": "index.html",
+  "authors": [
+    "Bilstone Adora"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.2"
+  }
+}
